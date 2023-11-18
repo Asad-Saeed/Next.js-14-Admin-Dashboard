@@ -26,7 +26,7 @@ const Transactions = () => {
                   height={40}
                   className={styles.userImage}
                 />
-                John Doe
+                Asad Saeed
               </div>
             </td>
             <td>
@@ -47,7 +47,7 @@ const Transactions = () => {
                   height={40}
                   className={styles.userImage}
                 />
-                John Doe
+                Asad Saeed
               </div>
             </td>
             <td>
@@ -66,7 +66,7 @@ const Transactions = () => {
                   height={40}
                   className={styles.userImage}
                 />
-                John Doe
+                Asad Saeed
               </div>
             </td>
             <td>
@@ -87,7 +87,7 @@ const Transactions = () => {
                   height={40}
                   className={styles.userImage}
                 />
-                John Doe
+                Asad Saeed
               </div>
             </td>
             <td>
