@@ -1,7 +1,8 @@
 import Image from "next/image";
 import MenuLink from "./menuLink/menuLink";
 import styles from "./sidebar.module.css";
-import AsadProfile from "@/../public/assets/images/asad.png"
+import AsadProfile from "@/../public/assets/images/asad.png";
+import Link from "next/link"
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -78,7 +79,6 @@ const menuItems = [
   },
 ];
 
-
 const Sidebar = async () => {
   return (
     <div className={styles.container}>
@@ -105,7 +105,12 @@ const Sidebar = async () => {
           </li>
         ))}
       </ul>
-  
+      <form>
+        <Link href="/login" className={styles.logout}>
+          <MdLogout />
+          Logout
+        </Link>
+      </form>
     </div>
   );
 };
