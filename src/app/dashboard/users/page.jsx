@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const UsersPage = async () => {
-
+  const id = Math.floor(Math.random() * 11);
 
   return (
     <div className={styles.container}>
@@ -34,7 +34,19 @@ const UsersPage = async () => {
             <td>Asad</td>
             <td>Asad</td>
             <td>Asad</td>
-            <td>Asad</td>
+            <div className={styles.buttons}>
+                <Link href={`/dashboard/users/${id}`}>
+                  <button className={`${styles.button} ${styles.view}`}>
+                    View
+                  </button>
+                </Link>
+                <form action="">
+                  <input type="hidden" name="id" value="" />
+                  <button className={`${styles.button} ${styles.delete}`}>
+                    Delete
+                  </button>
+                </form>
+              </div>
           </tr>
         </tbody>
       </table>
