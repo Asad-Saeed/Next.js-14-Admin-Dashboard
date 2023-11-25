@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const UsersPage = async ({ searchParams }) => {
-  const id = Math.floor(Math.random() * 11);
   const query = searchParams.search || "";
-  const users = await fetchUsers(query);
+  const page = searchParams.page || 1;
+  const {count,users} = await fetchUsers(query,page);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -66,7 +66,7 @@ const UsersPage = async ({ searchParams }) => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
