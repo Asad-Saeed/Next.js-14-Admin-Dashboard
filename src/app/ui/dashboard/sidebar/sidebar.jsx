@@ -1,8 +1,6 @@
 import Image from "next/image";
 import MenuLink from "./menuLink/menuLink";
 import styles from "./sidebar.module.css";
-import AsadProfile from "@/../public/assets/images/asad.png";
-import Link from "next/link"
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -15,6 +13,7 @@ import {
   MdHelpCenter,
   MdLogout,
 } from "react-icons/md";
+import { auth, signOut } from "@/app/auth";
 
 const menuItems = [
   {
@@ -80,18 +79,19 @@ const menuItems = [
 ];
 
 const Sidebar = async () => {
+  const { user } = (await auth()) || {};
   return (
     <div className={styles.container}>
       <div className={styles.user}>
         <Image
           className={styles.userImage}
-          src={AsadProfile}
+          src={user?.img || "/noavatar.png"}
           alt=""
           width="50"
           height="50"
         />
         <div className={styles.userDetail}>
-          <span className={styles.username}>Asad</span>
+          <span className={styles.username}>{user?.username}</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>
@@ -105,11 +105,16 @@ const Sidebar = async () => {
           </li>
         ))}
       </ul>
-      <form>
-        <Link href="/login" className={styles.logout}>
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button className={styles.logout}>
           <MdLogout />
           Logout
-        </Link>
+        </button>
       </form>
     </div>
   );
